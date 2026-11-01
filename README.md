@@ -1,4 +1,10 @@
+![Dot Sweep — Less noise. Clear next steps.](assets/banner.svg)
+
 # Dot Sweep
+
+**Less noise. Clear next steps.**
+
+[MIT licensed](LICENSE) · [Report a bug](https://github.com/sintaxerrorpvtltd/dot-sweep/issues) · [Test scenarios](tests/acceptance.md)
 
 An open-source Codex / ChatGPT Work plugin by Sintax Error Private Limited for the hundred-blue-dots problem.
 
@@ -12,11 +18,38 @@ Ask once instead of opening every chat:
 
 ## What this version does
 
+| Your inbox contains | Dot Sweep's review |
+| --- | --- |
+| Questions, approvals, failures | **Needs you** — keep visible |
+| Reviewed work with a supported completion result | **Finished** — clear when requested |
+| Proven coordination with no outstanding action | **Coordination only** — clear when requested |
+| Active work | **Running** — leave alone |
+| Missing evidence or unclear status | **Uncertain** — leave unread |
+
+These are digest categories, not changes to the native sidebar colours.
+
 Packages a skill that uses the desktop app's existing thread-list, thread-read, and read-state tools. It produces a grouped digest and performs explicitly requested bulk clearing, with refresh-before-write checks and per-item results. No server, dependency install, API key, or telemetry is included.
 
 It does **not** change native dot colours, install a sidebar widget, detect every agent message automatically, or provide an unattended watcher. A generic MCP server cannot manufacture access to the app's private inbox. If the host does not expose working thread tools, this plugin cannot clear dots.
 
 ## Install
+
+**Mac quick start:** clone or download this repository, then run `Install-Dot-Sweep.command` from the checkout. It uses your existing official Codex CLI and its supported plugin installer. No administrator access, shell-profile edits, or downloaded install script. Review the short script before running it.
+
+Requires a desktop host exposing working `list_threads`, `read_thread`, and `set_thread_read_state` tools. Installing this skill does not grant those capabilities. Standard CLI-only environments may not have them.
+
+For a Codex CLI exposing `plugin marketplace` and `plugin add`:
+
+```sh
+codex plugin marketplace add https://github.com/sintaxerrorpvtltd/dot-sweep.git
+codex plugin add dot-sweep@sintax-error
+```
+
+Then start a new chat so the skill catalog can refresh. Ask: **“Use Dot Sweep to review my unread updates. Do not clear anything.”** If the host tools fail, stop there; no inbox state should change.
+
+If an automated session reports `Operation not permitted` while updating Codex configuration, run the installer yourself in Terminal. It has not installed successfully until `codex plugin add` reports success. Do not disable app protections to make installation work.
+
+Remove with `codex plugin remove dot-sweep@sintax-error` (check your CLI's `plugin remove --help` if it uses a different selector).
 
 Add this repository as a local/plugin marketplace using your client's supported plugin manager and select Dot Sweep. The marketplace catalog is `.agents/plugins/marketplace.json`. Install is client-specific; no universal CLI command is assumed.
 
@@ -38,3 +71,5 @@ Run `python3 scripts/check_package.py`. This checks packaging, not host integrat
 Contributions welcome via issues and pull requests. Use synthetic examples; do not upload private chat exports, IDs, or account credentials.
 
 MIT licensed. Unofficial; not affiliated with OpenAI.
+
+Built by **Sintax Error Private Limited**. Contributions should keep the core small: readable evidence, explicit clearing, no silent loss of important updates.

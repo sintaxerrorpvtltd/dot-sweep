@@ -1,5 +1,6 @@
 """Validate the distributable package without reading any user chat data."""
 import json
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
@@ -16,4 +17,10 @@ skill = (root / 'skills/dot-sweep/SKILL.md').read_text()
 assert skill.startswith('---\nname: dot-sweep\ndescription: ')
 assert skill.count('\n---\n') == 1
 assert (root / 'LICENSE').is_file()
+for key in ('logo', 'composerIcon'):
+    asset = root / manifest['interface'][key]
+    assert asset.is_file()
+    ET.parse(asset)
+ET.parse(root / 'assets/banner.svg')
+assert (root / 'Install-Dot-Sweep.command').is_file()
 print('Package checks passed. Live desktop integration requires host acceptance checks.')
