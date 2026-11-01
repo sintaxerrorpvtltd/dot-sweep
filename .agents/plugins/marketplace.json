@@ -1,0 +1,5 @@
+{
+  "name": "sintax-error",
+  "interface": {"displayName": "Sintax Error"},
+  "plugins": [{"name": "dot-sweep", "source": {"source": "url", "url": "https://github.com/sintaxerrorpvtltd/dot-sweep.git", "ref": "main"}, "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"}, "category": "Productivity"}]
+}

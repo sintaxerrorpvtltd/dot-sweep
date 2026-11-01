@@ -1,0 +1,14 @@
+{
+  "name": "dot-sweep",
+  "version": "0.1.0",
+  "description": "Review unread agent updates together and clear reviewed coordination noise.",
+  "author": {"name": "Sintax Error Private Limited"},
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dot Sweep",
+    "developerName": "Sintax Error Private Limited",
+    "shortDescription": "One inbox for unread agent updates",
+    "defaultPrompt": ["Review my unread agent updates", "Clear reviewed coordination updates and keep anything needing me unread"]
+  }
+}
